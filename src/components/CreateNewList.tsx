@@ -1,9 +1,12 @@
 import React, { FC, useState, FormEvent } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { List } from 'store/types';
+import { addList } from 'store/actions';
 
 const CreateNewList: FC = () => {
   const [listName, setListName] = useState('');
+  const dispatch = useDispatch();
 
   const inputChangeHandler = (e: FormEvent<HTMLInputElement>) => {
     setListName(e.currentTarget.value);
@@ -22,8 +25,7 @@ const CreateNewList: FC = () => {
       tasks: [],
     };
 
-    console.log(newList);
-
+    dispatch(addList(newList));
     setListName('');
   };
 
