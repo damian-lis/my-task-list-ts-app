@@ -2,7 +2,7 @@ import React, { FC, useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { List } from 'store/types';
-import { addList } from 'store/actions';
+import { addList, setNotification } from 'store/actions';
 
 const CreateNewList: FC = () => {
   const [listName, setListName] = useState('');
@@ -26,6 +26,7 @@ const CreateNewList: FC = () => {
     };
 
     dispatch(addList(newList));
+    dispatch(setNotification(`New list("${newList.name}") created!`));
     setListName('');
   };
 
