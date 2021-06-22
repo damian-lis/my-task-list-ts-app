@@ -1,4 +1,6 @@
 export const ADD_LIST = 'ADD_LIST';
+export const GET_LISTS = 'GET_LISTS';
+
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
 export interface Task {
@@ -24,6 +26,10 @@ interface AddListAction {
   payload: List;
 }
 
+interface GetListsAction {
+  type: typeof GET_LISTS;
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -32,7 +38,7 @@ interface SetNotificationAction {
   };
 }
 
-export type ListsAction = AddListAction;
+export type ListsAction = AddListAction | GetListsAction;
 
 export type NotificationAction = SetNotificationAction;
 
