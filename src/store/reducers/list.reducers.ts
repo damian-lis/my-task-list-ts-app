@@ -1,4 +1,4 @@
-import { ListsAction, ListState, Lists, ADD_LIST } from '../types';
+import { ListsAction, ListState, Lists, ADD_LIST, GET_LISTS } from '../types';
 
 const initialState: ListState = {
   lists: {},
@@ -28,6 +28,12 @@ export default (state = initialState, action: ListsAction): ListState => {
       return {
         ...state,
         lists: clonedListsFromLS,
+      };
+
+    case GET_LISTS:
+      return {
+        ...state,
+        lists: listsFromLS,
       };
 
     default:
