@@ -11,6 +11,7 @@ export const ADD_TASK = 'ADD_TASK';
 export const SET_TASK_TO_EDIT = 'SET_TASK_TO_EDIT';
 export const UNSET_TASK_TO_EDIT = 'UNSET_TASK_TO_EDIT';
 export const UPDATE_TASK = 'UPDATE_TASK';
+export const SET_TASK_TO_DELETE = 'SET_TASK_TO_DELETE';
 
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
@@ -104,6 +105,14 @@ interface UpdateTaskAction {
   };
 }
 
+interface SetTaskToDeleteAction {
+  type: typeof SET_TASK_TO_DELETE;
+  payload: {
+    task: Task;
+    list: List;
+  };
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -124,7 +133,8 @@ export type ListsAction =
   | AddTaskAction
   | SetTaskToEditAction
   | UnsetTaskToEditAction
-  | UpdateTaskAction;
+  | UpdateTaskAction
+  | SetTaskToDeleteAction;
 
 export type NotificationAction = SetNotificationAction;
 
@@ -135,6 +145,10 @@ export interface ListState {
   selectedList: List | null;
   listToEdit: List | null;
   taskToEdit: {
+    task: Task;
+    list: List;
+  } | null;
+  taskToDelete: {
     task: Task;
     list: List;
   } | null;
