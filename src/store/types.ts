@@ -7,6 +7,8 @@ export const SET_LIST_TO_EDIT = 'SET_LIST_TO_EDIT';
 export const UPDATE_LIST = 'UPDATE_LIST';
 export const SET_SELECTED_LIST = 'SET_SELECTED_LIST';
 
+export const ADD_TASK = 'ADD_TASK';
+
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
 export interface Task {
@@ -69,6 +71,14 @@ interface SetSelectedListAction {
   payload: string;
 }
 
+interface AddTaskAction {
+  type: typeof ADD_TASK;
+  payload: {
+    task: Task;
+    list: List;
+  };
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -85,7 +95,8 @@ export type ListsAction =
   | SetListIdToDeleteAction
   | SetListToEditAction
   | UpdateListAction
-  | SetSelectedListAction;
+  | SetSelectedListAction
+  | AddTaskAction;
 
 export type NotificationAction = SetNotificationAction;
 
