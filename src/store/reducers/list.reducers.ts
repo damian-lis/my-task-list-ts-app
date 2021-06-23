@@ -9,6 +9,7 @@ import {
   SET_LIST_ID_TO_DELETE,
   SET_LIST_TO_EDIT,
   UPDATE_LIST,
+  SET_SELECTED_LIST,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -95,6 +96,13 @@ export default (state = initialState, action: ListsAction): ListState => {
         ...state,
         lists: clonedListsFromLS3,
         listToEdit: null,
+      };
+
+    case SET_SELECTED_LIST:
+      const selectedList = getListsFromLS()[action.payload];
+      return {
+        ...state,
+        selectedList: selectedList,
       };
 
     default:
