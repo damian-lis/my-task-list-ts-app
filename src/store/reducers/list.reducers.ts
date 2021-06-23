@@ -16,6 +16,7 @@ import {
   UPDATE_TASK,
   SET_TASK_TO_DELETE,
   UNSET_TASK_TO_DELETE,
+  DELETE_TASK,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -176,6 +177,24 @@ export default (state = initialState, action: ListsAction): ListState => {
     case UNSET_TASK_TO_DELETE:
       return {
         ...state,
+        taskToDelete: null,
+      };
+
+    case DELETE_TASK:
+      const clonedListsFromLS5 = { ...listsFromLS };
+      const clonedTasks = [
+        ...clonedListsFromLS5[state.taskToDelete!.list.id].tasks,
+      ];
+      const task = clonedTasks.find(
+        (task) => task.id === state.taskToDelete!.task.id
+      );
+      clonedTasks.splice(clonedTasks.indexOf(task!), 1);
+      clonedListsFromLS5[state.taskToDelete!.list.id].tasks = clonedTasks;
+      saveListsToLS(clonedListsFromLS5);
+      return {
+        ...state,
+        lists: clonedListsFromLS5,
+        selectedList: clonedListsFromLS5[state.taskToDelete!.list.id],
         taskToDelete: null,
       };
 
