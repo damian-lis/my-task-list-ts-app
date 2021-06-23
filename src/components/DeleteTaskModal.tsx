@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { Task, List } from 'store/types';
+import { unsetTaskToDelete } from 'store/actions';
 
 interface DeleteTaskModalProps {
   taskToDelete: {
@@ -11,8 +13,10 @@ interface DeleteTaskModalProps {
 const DeleteTaskModal: FC<DeleteTaskModalProps> = ({
   taskToDelete: { task, list },
 }) => {
+  const dispatch = useDispatch();
+
   const closeModalHandler = () => {
-    console.log('unsetDelete');
+    dispatch(unsetTaskToDelete());
   };
 
   const deleteHandler = () => {
