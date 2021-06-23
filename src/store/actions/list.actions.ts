@@ -6,6 +6,8 @@ import {
   GET_LIST_BY_ID,
   SET_LIST_ID_TO_DELETE,
   DELETE_LIST,
+  SET_LIST_TO_EDIT,
+  UPDATE_LIST,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -39,5 +41,22 @@ export const deleteList = (id: string): ListsAction => {
   return {
     type: DELETE_LIST,
     payload: id,
+  };
+};
+
+export const setListToEdit = (id: string): ListsAction => {
+  return {
+    type: SET_LIST_TO_EDIT,
+    payload: id,
+  };
+};
+
+export const updateList = (id: string, name: string): ListsAction => {
+  return {
+    type: UPDATE_LIST,
+    payload: {
+      id,
+      name,
+    },
   };
 };
