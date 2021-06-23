@@ -12,6 +12,7 @@ import {
   SET_SELECTED_LIST,
   ADD_TASK,
   SET_TASK_TO_EDIT,
+  UNSET_TASK_TO_EDIT,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -127,6 +128,12 @@ export default (state = initialState, action: ListsAction): ListState => {
           task: action.payload.task,
           list: action.payload.list,
         },
+      };
+
+    case UNSET_TASK_TO_EDIT:
+      return {
+        ...state,
+        taskToEdit: null,
       };
 
     default:
