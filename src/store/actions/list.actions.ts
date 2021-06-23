@@ -16,6 +16,7 @@ import {
   UPDATE_TASK,
   SET_TASK_TO_DELETE,
   UNSET_TASK_TO_DELETE,
+  DELETE_TASK,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -132,5 +133,15 @@ export const setTaskToDelete = (task: Task, list: List): ListsAction => {
 export const unsetTaskToDelete = (): ListsAction => {
   return {
     type: UNSET_TASK_TO_DELETE,
+  };
+};
+
+export const deleteTask = (task: Task, list: List): ListsAction => {
+  return {
+    type: DELETE_TASK,
+    payload: {
+      task,
+      list,
+    },
   };
 };
