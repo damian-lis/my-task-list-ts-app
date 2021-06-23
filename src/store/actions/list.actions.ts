@@ -11,6 +11,7 @@ import {
   UPDATE_LIST,
   SET_SELECTED_LIST,
   ADD_TASK,
+  SET_TASK_TO_EDIT,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -74,6 +75,16 @@ export const setSelectedList = (id: string): ListsAction => {
 export const addTask = (task: Task, list: List): ListsAction => {
   return {
     type: ADD_TASK,
+    payload: {
+      task,
+      list,
+    },
+  };
+};
+
+export const setTaskToEdit = (task: Task, list: List): ListsAction => {
+  return {
+    type: SET_TASK_TO_EDIT,
     payload: {
       task,
       list,
