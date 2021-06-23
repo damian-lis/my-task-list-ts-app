@@ -2,12 +2,16 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from 'store/store';
-import { getLists } from 'store/actions';
+import { getLists, setListIdToDelete } from 'store/actions';
 import { List } from 'store/types';
 
 const Lists: FC = () => {
   const dispatch = useDispatch();
   const lists = useSelector((state: RootState) => state.list.lists);
+
+  const setListIdToDeleteHandler = (id: string) => {
+    dispatch(setListIdToDelete(id));
+  };
 
   useEffect(() => {
     dispatch(getLists());
@@ -25,7 +29,10 @@ const Lists: FC = () => {
               return (
                 <div className='panel-block py-3' key={list.id}>
                   <p>{list.name}</p>
-                  <span className='panel-icon has-text-danger'>
+                  <span
+                    className='panel-icon has-text-danger'
+                    onClick={() => setListIdToDeleteHandler(list.id)}
+                  >
                     <i className='fas fa-times-circle'></i>
                   </span>
                 </div>
