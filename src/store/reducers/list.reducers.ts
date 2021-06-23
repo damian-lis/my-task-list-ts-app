@@ -10,6 +10,7 @@ import {
   SET_LIST_TO_EDIT,
   UPDATE_LIST,
   SET_SELECTED_LIST,
+  ADD_TASK,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -103,6 +104,18 @@ export default (state = initialState, action: ListsAction): ListState => {
       return {
         ...state,
         selectedList: selectedList,
+      };
+
+    case ADD_TASK:
+      const clonedListsFromLS4 = { ...listsFromLS };
+      clonedListsFromLS4[action.payload.list.id].tasks.push(
+        action.payload.task
+      );
+      saveListsToLS(clonedListsFromLS4);
+      return {
+        ...state,
+        lists: clonedListsFromLS4,
+        selectedList: clonedListsFromLS4[action.payload.list.id],
       };
 
     default:
