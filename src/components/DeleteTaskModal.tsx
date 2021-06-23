@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Task, List } from 'store/types';
-import { unsetTaskToDelete } from 'store/actions';
+import { unsetTaskToDelete, deleteTask, setNotification } from 'store/actions';
 
 interface DeleteTaskModalProps {
   taskToDelete: {
@@ -20,7 +20,8 @@ const DeleteTaskModal: FC<DeleteTaskModalProps> = ({
   };
 
   const deleteHandler = () => {
-    console.log('delete:', task, list);
+    dispatch(deleteTask(task, list));
+    dispatch(setNotification(`Task "${task.name}" deleted!`, 'danger'));
   };
 
   return (
