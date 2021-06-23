@@ -7,6 +7,7 @@ import Sidebar from 'components/Sidebar';
 import Notification from 'components/Notification';
 import DeleteListModal from 'components/DeleteListModal';
 import EditListModal from 'components/EditListModal';
+import MainContent from 'components/MainContent';
 
 const App: FC = () => {
   const notificationMsg = useSelector(
@@ -26,6 +27,7 @@ const App: FC = () => {
       <div className='container px-5'>
         <div className='columns'>
           <Sidebar />
+          <MainContent />
         </div>
       </div>
       <Notification msg={notificationMsg} />
