@@ -10,6 +10,7 @@ export const SET_SELECTED_LIST = 'SET_SELECTED_LIST';
 export const ADD_TASK = 'ADD_TASK';
 export const SET_TASK_TO_EDIT = 'SET_TASK_TO_EDIT';
 export const UNSET_TASK_TO_EDIT = 'UNSET_TASK_TO_EDIT';
+export const UPDATE_TASK = 'UPDATE_TASK';
 
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
@@ -93,6 +94,16 @@ interface UnsetTaskToEditAction {
   type: typeof UNSET_TASK_TO_EDIT;
 }
 
+interface UpdateTaskAction {
+  type: typeof UPDATE_TASK;
+  payload: {
+    taskId: string;
+    taskName: string;
+    taskState: boolean;
+    list: List;
+  };
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -112,7 +123,8 @@ export type ListsAction =
   | SetSelectedListAction
   | AddTaskAction
   | SetTaskToEditAction
-  | UnsetTaskToEditAction;
+  | UnsetTaskToEditAction
+  | UpdateTaskAction;
 
 export type NotificationAction = SetNotificationAction;
 
