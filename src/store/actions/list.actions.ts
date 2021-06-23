@@ -12,6 +12,7 @@ import {
   SET_SELECTED_LIST,
   ADD_TASK,
   SET_TASK_TO_EDIT,
+  UNSET_TASK_TO_EDIT,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -89,5 +90,11 @@ export const setTaskToEdit = (task: Task, list: List): ListsAction => {
       task,
       list,
     },
+  };
+};
+
+export const unsetTaskToEdit = (): ListsAction => {
+  return {
+    type: UNSET_TASK_TO_EDIT,
   };
 };
