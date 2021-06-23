@@ -13,6 +13,7 @@ import {
   ADD_TASK,
   SET_TASK_TO_EDIT,
   UNSET_TASK_TO_EDIT,
+  UPDATE_TASK,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -133,6 +134,30 @@ export default (state = initialState, action: ListsAction): ListState => {
     case UNSET_TASK_TO_EDIT:
       return {
         ...state,
+        taskToEdit: null,
+      };
+
+    case UPDATE_TASK:
+      const clonedListsFromLS6 = { ...listsFromLS };
+      const clonedList = { ...clonedListsFromLS6[action.payload.list.id] };
+      const clonedTasks2 = [...clonedList.tasks];
+      const task2 = clonedTasks2.find(
+        (task) => task.id === action.payload.taskId
+      );
+      const clonedTask = { ...task2! };
+      clonedTask.name = action.payload.taskName;
+      clonedTask.completed = action.payload.taskState;
+      const updatedTasks = clonedTasks2.map((task) =>
+        task.id === clonedTask.id ? clonedTask : task
+      );
+      clonedList.tasks = updatedTasks;
+      clonedListsFromLS6[clonedList.id] = clonedList;
+      saveListsToLS(clonedListsFromLS6);
+
+      return {
+        ...state,
+        lists: clonedListsFromLS6,
+        selectedList: clonedList,
         taskToEdit: null,
       };
 
