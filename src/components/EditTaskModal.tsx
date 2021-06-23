@@ -1,5 +1,7 @@
 import React, { FC, FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Task, List } from 'store/types';
+import { unsetTaskToEdit } from 'store/actions';
 
 interface EditTaskModalProps {
   taskToEdit: {
@@ -9,8 +11,13 @@ interface EditTaskModalProps {
 }
 
 const EditTaskModal: FC<EditTaskModalProps> = ({ taskToEdit: { task } }) => {
+  const dispatch = useDispatch();
   const [taskName, setTaskName] = useState(task.name);
   const [taskState, setTaskState] = useState(task.completed);
+
+  const closeModalHandler = () => {
+    dispatch(unsetTaskToEdit());
+  };
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,11 +43,15 @@ const EditTaskModal: FC<EditTaskModalProps> = ({ taskToEdit: { task } }) => {
 
   return (
     <div className='modal is-active'>
-      <div className='modal-background'></div>
+      <div className='modal-background' onClick={closeModalHandler}></div>
       <form className='modal-card' onSubmit={submitHandler}>
         <header className='modal-card-head'>
           <p className='modal-card-title'>Edit Task</p>
-          <button type='button' className='delete'></button>
+          <button
+            type='button'
+            className='delete'
+            onClick={closeModalHandler}
+          ></button>
         </header>
         <div className='modal-card-body'>
           <div className='field'>
@@ -71,7 +82,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({ taskToEdit: { task } }) => {
           <button type='submit' className='button is-success'>
             Save changes
           </button>
-          <button type='button' className='button'>
+          <button type='button' className='button' onClick={closeModalHandler}>
             Cancel
           </button>
         </footer>
