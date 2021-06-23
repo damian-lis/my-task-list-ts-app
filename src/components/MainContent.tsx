@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import SelectList from './SelectList';
 import AddNewTask from './AddNewTask';
+import Tasks from './Tasks';
 
 const MainContent: FC = () => {
   const selectedList = useSelector(
@@ -12,10 +13,14 @@ const MainContent: FC = () => {
   return (
     <div className='column is-9'>
       <div className='box'>
-        <div className='box'>
-          <SelectList />
-          {selectedList && <AddNewTask list={selectedList} />}
-        </div>
+        <SelectList />
+        {selectedList && (
+          <>
+            <AddNewTask list={selectedList} />
+            <hr />
+            <Tasks tasks={selectedList.tasks} />
+          </>
+        )}
       </div>
     </div>
   );
