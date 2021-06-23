@@ -12,6 +12,7 @@ export const SET_TASK_TO_EDIT = 'SET_TASK_TO_EDIT';
 export const UNSET_TASK_TO_EDIT = 'UNSET_TASK_TO_EDIT';
 export const UPDATE_TASK = 'UPDATE_TASK';
 export const SET_TASK_TO_DELETE = 'SET_TASK_TO_DELETE';
+export const UNSET_TASK_TO_DELETE = 'UNSET_TASK_TO_DELETE';
 
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
@@ -113,6 +114,10 @@ interface SetTaskToDeleteAction {
   };
 }
 
+interface UnsetTaskToDeleteAction {
+  type: typeof UNSET_TASK_TO_DELETE;
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -134,7 +139,8 @@ export type ListsAction =
   | SetTaskToEditAction
   | UnsetTaskToEditAction
   | UpdateTaskAction
-  | SetTaskToDeleteAction;
+  | SetTaskToDeleteAction
+  | UnsetTaskToDeleteAction;
 
 export type NotificationAction = SetNotificationAction;
 
