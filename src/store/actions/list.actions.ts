@@ -1,5 +1,6 @@
 import {
   List,
+  Task,
   ListsAction,
   ADD_LIST,
   GET_LISTS,
@@ -9,6 +10,7 @@ import {
   SET_LIST_TO_EDIT,
   UPDATE_LIST,
   SET_SELECTED_LIST,
+  ADD_TASK,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -66,5 +68,15 @@ export const setSelectedList = (id: string): ListsAction => {
   return {
     type: SET_SELECTED_LIST,
     payload: id,
+  };
+};
+
+export const addTask = (task: Task, list: List): ListsAction => {
+  return {
+    type: ADD_TASK,
+    payload: {
+      task,
+      list,
+    },
   };
 };
