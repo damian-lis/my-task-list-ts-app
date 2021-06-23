@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Task } from 'store/types';
-import { setTaskToEdit } from 'store/actions';
+import { setTaskToEdit, setTaskToDelete } from 'store/actions';
 import { RootState } from 'store/store';
 
 interface TasksProps {
@@ -14,6 +14,10 @@ const Tasks: FC<TasksProps> = ({ tasks }) => {
 
   const setTaskToEditHandler = (task: Task) => {
     dispatch(setTaskToEdit(task, list));
+  };
+
+  const setTaskToDeleteHandler = (task: Task) => {
+    dispatch(setTaskToDelete(task, list));
   };
 
   return (
@@ -47,7 +51,10 @@ const Tasks: FC<TasksProps> = ({ tasks }) => {
                   </button>
                 </td>
                 <td className='has-text-centered'>
-                  <button className='button is-danger is-small'>
+                  <button
+                    className='button is-danger is-small'
+                    onClick={() => setTaskToDeleteHandler(task)}
+                  >
                     <span className='icon'>
                       <i className='fas fa-times'></i>
                     </span>
