@@ -15,6 +15,7 @@ import {
   UNSET_TASK_TO_EDIT,
   UPDATE_TASK,
   SET_TASK_TO_DELETE,
+  UNSET_TASK_TO_DELETE,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -170,6 +171,12 @@ export default (state = initialState, action: ListsAction): ListState => {
           task: action.payload.task,
           list: action.payload.list,
         },
+      };
+
+    case UNSET_TASK_TO_DELETE:
+      return {
+        ...state,
+        taskToDelete: null,
       };
 
     default:
