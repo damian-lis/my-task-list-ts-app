@@ -5,6 +5,7 @@ export const DELETE_LIST = 'DELETE_LIST';
 export const SET_LIST_ID_TO_DELETE = 'SET_LISTID_TO_DELETE';
 export const SET_LIST_TO_EDIT = 'SET_LIST_TO_EDIT';
 export const UPDATE_LIST = 'UPDATE_LIST';
+export const SET_SELECTED_LIST = 'SET_SELECTED_LIST';
 
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 
@@ -63,6 +64,11 @@ interface UpdateListAction {
   };
 }
 
+interface SetSelectedListAction {
+  type: typeof SET_SELECTED_LIST;
+  payload: string;
+}
+
 interface SetNotificationAction {
   type: typeof SET_NOTIFICATION;
   payload: {
@@ -78,7 +84,8 @@ export type ListsAction =
   | DeleteListAction
   | SetListIdToDeleteAction
   | SetListToEditAction
-  | UpdateListAction;
+  | UpdateListAction
+  | SetSelectedListAction;
 
 export type NotificationAction = SetNotificationAction;
 
