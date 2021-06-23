@@ -14,6 +14,7 @@ import {
   SET_TASK_TO_EDIT,
   UNSET_TASK_TO_EDIT,
   UPDATE_TASK,
+  SET_TASK_TO_DELETE,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -23,6 +24,7 @@ const initialState: ListState = {
   selectedList: null,
   listToEdit: null,
   taskToEdit: null,
+  taskToDelete: null,
 };
 
 // Helper functions
@@ -159,6 +161,15 @@ export default (state = initialState, action: ListsAction): ListState => {
         lists: clonedListsFromLS6,
         selectedList: clonedList,
         taskToEdit: null,
+      };
+
+    case SET_TASK_TO_DELETE:
+      return {
+        ...state,
+        taskToDelete: {
+          task: action.payload.task,
+          list: action.payload.list,
+        },
       };
 
     default:
