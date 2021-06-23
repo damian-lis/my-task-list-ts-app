@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Task, List } from 'store/types';
-import { unsetTaskToEdit } from 'store/actions';
+import { unsetTaskToEdit, updateTask, setNotification } from 'store/actions';
 
 interface EditTaskModalProps {
   taskToEdit: {
@@ -10,7 +10,9 @@ interface EditTaskModalProps {
   };
 }
 
-const EditTaskModal: FC<EditTaskModalProps> = ({ taskToEdit: { task } }) => {
+const EditTaskModal: FC<EditTaskModalProps> = ({
+  taskToEdit: { task, list },
+}) => {
   const dispatch = useDispatch();
   const [taskName, setTaskName] = useState(task.name);
   const [taskState, setTaskState] = useState(task.completed);
@@ -30,7 +32,8 @@ const EditTaskModal: FC<EditTaskModalProps> = ({ taskToEdit: { task } }) => {
       return alert('Task name and state are the same as before!');
     }
 
-    console.log(taskName, taskState, 'submit!');
+    dispatch(updateTask(task.id, taskName, taskState, list));
+    dispatch(setNotification(`Task "${task.name}" updated!`));
   };
 
   const nameChangeHandler = (e: FormEvent<HTMLInputElement>) => {
