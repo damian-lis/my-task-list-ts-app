@@ -11,6 +11,7 @@ import {
   UPDATE_LIST,
   SET_SELECTED_LIST,
   ADD_TASK,
+  SET_TASK_TO_EDIT,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -19,6 +20,7 @@ const initialState: ListState = {
   listById: null,
   selectedList: null,
   listToEdit: null,
+  taskToEdit: null,
 };
 
 // Helper functions
@@ -116,6 +118,15 @@ export default (state = initialState, action: ListsAction): ListState => {
         ...state,
         lists: clonedListsFromLS4,
         selectedList: clonedListsFromLS4[action.payload.list.id],
+      };
+
+    case SET_TASK_TO_EDIT:
+      return {
+        ...state,
+        taskToEdit: {
+          task: action.payload.task,
+          list: action.payload.list,
+        },
       };
 
     default:
