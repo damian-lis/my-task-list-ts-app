@@ -7,6 +7,8 @@ import {
   GET_LIST_BY_ID,
   DELETE_LIST,
   SET_LIST_ID_TO_DELETE,
+  SET_LIST_TO_EDIT,
+  UPDATE_LIST,
 } from 'store/types';
 
 const initialState: ListState = {
@@ -14,6 +16,7 @@ const initialState: ListState = {
   listIdToDelete: '',
   listById: null,
   selectedList: null,
+  listToEdit: null,
 };
 
 // Helper functions
@@ -75,6 +78,23 @@ export default (state = initialState, action: ListsAction): ListState => {
           state.selectedList && listId === state.selectedList.id
             ? null
             : state.selectedList,
+      };
+
+    case SET_LIST_TO_EDIT:
+      const listToEdit = listsFromLS[action.payload];
+      return {
+        ...state,
+        listToEdit,
+      };
+
+    case UPDATE_LIST:
+      const clonedListsFromLS3 = { ...listsFromLS };
+      clonedListsFromLS3[action.payload.id].name = action.payload.name;
+      saveListsToLS(clonedListsFromLS3);
+      return {
+        ...state,
+        lists: clonedListsFromLS3,
+        listToEdit: null,
       };
 
     default:
