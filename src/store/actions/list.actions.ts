@@ -8,6 +8,7 @@ import {
   DELETE_LIST,
   SET_LIST_TO_EDIT,
   UPDATE_LIST,
+  SET_SELECTED_LIST,
 } from 'store/types';
 
 export const addList = (list: List): ListsAction => {
@@ -58,5 +59,12 @@ export const updateList = (id: string, name: string): ListsAction => {
       id,
       name,
     },
+  };
+};
+
+export const setSelectedList = (id: string): ListsAction => {
+  return {
+    type: SET_SELECTED_LIST,
+    payload: id,
   };
 };
