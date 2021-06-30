@@ -25,3 +25,37 @@
 .section {
   padding: 2rem 0;
 }
+
+.modal {
+  padding:10px;
+}
+
+.modal-card{
+  width:100%;
+  max-width:500px;
+}
+
+.modal-card-title{
+  width:100%;
+  flex-shrink: 1;
+}
+
+
+@media(max-width:400px){
+  .modal-card-foot{
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media(max-width:275px){
+  .modal-card-foot{
+   flex-direction: column;
+  }
+
+  .modal-card-foot .button:not(:last-child){
+    margin:0;
+    margin-bottom:8px;
+  }
+}
+

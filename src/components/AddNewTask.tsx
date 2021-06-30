@@ -36,7 +36,7 @@ const AddNewTask: FC<AddNewTaskProps> = ({ list }) => {
 
   return (
     <section className='section'>
-      <h2 className='is-size-4 has-text-centered'>
+      <h2 className='is-size-4 has-text-centered mb-4'>
         Add new task to selected field
       </h2>
       <form onSubmit={submitHandler}>

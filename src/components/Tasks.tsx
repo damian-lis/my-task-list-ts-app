@@ -22,7 +22,7 @@ const Tasks: FC<TasksProps> = ({ tasks }) => {
 
   return (
     <section className='section'>
-      <h2 className='is-size-4 has-text-centered'>
+      <h2 className='is-size-4 has-text-centered mb-4'>
         List of tasks in selected list
       </h2>
       {tasks.length === 0 ? (
