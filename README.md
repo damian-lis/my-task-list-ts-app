@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Task list app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application thanks to which you can create various lists of tasks, and in them specific tasks to be performed (using TS in React).
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+![](public/images/intro.gif)
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Live version is available [here](https://task-list-app-ts.herokuapp.com/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
 
-### `npm test`
+## Table of contents
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Technologies
+2. Setup
 
-### `npm run build`
+<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 1. Technologiess
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The following technologies were used in the project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- TypeScript
+- Bulma
+- Redux
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 2. Setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+First of all, you need to make sure you have [Node.js](https://nodejs.org/en/) installed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you have Node.js installed clone the github repo.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Open the project in your favourite IDE and run following script for downloading dependencies:
 
-## Learn More
+```
+npm install
+# or
+yarn install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After that, run the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run dev
+# or
+yarn run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+<br/>
+
+The server.js file with basic server implementation was created for the deployment to the heroku server (that's why under the npm start command there is a script that starts the production server by heroku service (instead of the react development server), which serves the previously built application). This solution was introduced becouse of TypeScript specification.
