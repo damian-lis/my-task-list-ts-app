@@ -1,4 +1,4 @@
-# Task list app
+# My Task List TS App
 
 Application thanks to which you can create various lists of tasks, and in them specific tasks to be performed (using TS in React).
 
@@ -8,7 +8,7 @@ Application thanks to which you can create various lists of tasks, and in them s
 
 <br/>
 
-### Live version is available [here](https://task-list-app-ts.herokuapp.com/).
+### Live version is available [here](https://my-task-list-ts-app.herokuapp.com/).
 
 <br/>
 
