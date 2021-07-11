@@ -39,6 +39,7 @@
 .modal-card-title{
   width:100%;
   flex-shrink: 1;
+  line-height: 35px;
 }
 
 .completed {
