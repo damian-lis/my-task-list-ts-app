@@ -39,11 +39,11 @@ const Tasks: FC<TasksProps> = ({ tasks }) => {
           <tbody>
             {tasks.map((task: Task) => (
               <tr key={task.id} className={task.completed ? 'completed' : ''}>
-                <td>
+                <td className='is-vcentered'>
                   {task.name}
                   {task.completed && ' (completed)'}
                 </td>
-                <td className='has-text-centered th-width'>
+                <td className='has-text-centered is-vcentered th-width'>
                   <button
                     className='button is-primary is-small'
                     onClick={() => setTaskToEditHandler(task)}
@@ -53,7 +53,7 @@ const Tasks: FC<TasksProps> = ({ tasks }) => {
                     </span>
                   </button>
                 </td>
-                <td className='has-text-centered th-width'>
+                <td className='has-text-centered is-vcentered th-width'>
                   <button
                     className='button is-danger is-small'
                     onClick={() => setTaskToDeleteHandler(task)}
