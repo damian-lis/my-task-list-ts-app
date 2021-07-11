@@ -30,7 +30,7 @@ const AddNewTask: FC<AddNewTaskProps> = ({ list }) => {
     };
 
     dispatch(addTask(newTask, list));
-    dispatch(setNotification(`New task created("${newTask.name}")!`));
+    dispatch(setNotification(`New task "${newTask.name}" created!`));
     setTaskName('');
   };
 
